@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0097b2;
+      background-image: linear-gradient(180deg, #0097b2 0%, #a52b2b 50%, #887295 100%);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .message {
+      max-width: 80%;
+    }
+    .parameter {
+      font-size: 0.8em;
+    }
+  </style>
+  <title>Access Denied</title>
+</head>
+<body>
+  <div class="message">
+    <h1>Access denied</h1>
+    <p id="parameterMessage">You cannot access <span class="parameter"></span></p>
+  </div>
+
+  <script>
+    // Get the value of the 'resource' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const resource = urlParams.get('resource');
+
+    // Update the parameter message with the retrieved value
+    if (resource) {
+      document.querySelector('.parameter').textContent = resource;
+    } else {
+      document.querySelector('#parameterMessage').style.display = 'none'; // Hide the parameter message if no resource parameter is provided
+    }
+  </script>
+</body>
+</html>
